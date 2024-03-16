@@ -43,7 +43,7 @@ public class InsertFalkinburg extends HttpServlet {
         "	</header>\n" +
         "	<div class=container>\n" +
         "		<div class=\"left-box\">\n" +
-        "			<a href=\"search_falkinburg.html\">Search Data</a>\n" +
+        "			<a href=\"SearchFalkinburg\">Search Data</a>\n" +
         "		</div>\n" +
         "		<main class=\"right-box\">\n" +
         "			<h1>Task Details</h1>\n" +
@@ -51,7 +51,23 @@ public class InsertFalkinburg extends HttpServlet {
         "				Title: <input type=\"text\" name=\"title\"><br>\n" +
         "				Description: <input type=\"text\" name=\"description\"><br>\n" +
         "				Due Date: <input type=\"text\" name=\"due_date\"><br>\n" +
-        "				Status: <input type=\"text\" name=\"status\"><br>\n" +
+        "				Status: <select name=\"status\">\r\n"
+        + "					<option value=\"Incomplete\">Incomplete</option>\r\n"
+        + "					<option value=\"In_Progress\">In Progress</option>\r\n"
+        + "					<option value=\"Complete\">Complete</option>\r\n"
+        + "				</select><br>\r\n"
+        + "				Priority: <select name=\"priority\">\r\n"
+        + "					<option value=\"1\">1 - Highest</option>\r\n"
+        + "					<option value=\"2\">2</option>\r\n"
+        + "					<option value=\"3\">3</option>\r\n"
+        + "					<option value=\"4\">4</option>\r\n"
+        + "					<option value=\"5\">5</option>\r\n"
+        + "					<option value=\"6\">6</option>\r\n"
+        + "					<option value=\"7\">7</option>\r\n"
+        + "					<option value=\"8\">8</option>\r\n"
+        + "					<option value=\"9\">9</option>\r\n"
+        + "					<option value=\"10\">10 - Lowest</option>\r\n"
+        + "				</select><br>\r\n" +
         "				<input type=\"submit\" value=\"Submit\">\n" +
         "			</form>\n" +
         "		</main>\n" +
@@ -70,26 +86,28 @@ public class InsertFalkinburg extends HttpServlet {
 			String description = request.getParameter("description");
 			String due_date = request.getParameter("due_date");
 			String status = request.getParameter("status");
-			
-			String insertSQL = "INSERT INTO MyTableFalkinburg0315 (TITLE, DESCRIPTION, DUE_DATE, STATUS) VALUES (?, ?, ?, ?)";
+			String priority = request.getParameter("priority");
+
+			String insertSQL = "INSERT INTO MyTableFalkinburg0315 (TITLE, DESCRIPTION, DUE_DATE, STATUS, PRIORITY) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, title);
 			preparedStatement.setString(2, description);
 			preparedStatement.setString(3, due_date);
 			preparedStatement.setString(4, status);
+			preparedStatement.setString(5, priority);
 			
 			int rowsAffected = preparedStatement.executeUpdate();
 			response.getWriter().println("<html><body>");
 	        response.getWriter().println("<h1>Data Insertion Success</h1>");
 	        response.getWriter().println("<p>" + rowsAffected + " row(s) inserted successfully.</p>");
-	        response.getWriter().println("<a href='insert_falkinburg.html'>Back to Task Creation");
+	        response.getWriter().println("<a href='InsertFalkinburg'>Back to Task Creation");
 			response.getWriter().println("</body></html>");
 		} catch(SQLException e) {
 			e.printStackTrace();
 			response.getWriter().println("<html><body>");
 	        response.getWriter().println("<h1>Errors</h1>");
 	        response.getWriter().println("<p> An error occured while inserting data.</p>");
-	        response.getWriter().println("<a href='insert_falkinburg.html'>Back to Task Creation");
+	        response.getWriter().println("<a href='InsertFalkinburg'>Back to Task Creation");
 			response.getWriter().println("</body></html>");
 
 		}

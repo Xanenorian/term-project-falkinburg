@@ -20,7 +20,23 @@
 				Title: <input type="text" name="title"><br>
 				Description: <input type="text" name="description"><br>
 				Due Date: <input type="text" name="due_date"><br>
-				Status: <input type="text" name="status"><br>
+				Status: <select name="status">
+					<option value="Incomplete">Incomplete</option>
+					<option value="In_Progress">In Progress</option>
+					<option value="Complete">Complete</option>
+				</select><br>
+				Priority: <select name="priority">
+					<option value="1">1 - Highest</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10 - Lowest</option>
+				</select><br>
 				<input type="submit" value="Submit">
 			</form>
 		</main>

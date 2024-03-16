@@ -8,29 +8,22 @@
 </head>
 <body>
 	<header>
-		Search Data
+		To-Do List
 	</header>
 	
 	
 	<div class="container">
 		<div class="left-box">
-			<a href="insert_falkinburg.html">Add Tasks</a>
+			<a href="InsertFalkinburg">Add Tasks</a>
 		</div>
 		<main class="right-box">
-		<h1>Task List</h1>
-		<table border="1">
-			<tr>
-				<th>Title</th>
-				<th>Description</th>
-				<th>Due Date</th>
-				<th>Status</th>
-			</tr>
-			<tr>
-				<td colspan="4">
-			</tr>
-		</table>
+			<h1>Task List</h1>
+			<form action="SearchFalkinburg" method="get">
+				<input type="submit" value="Show Task List">
+			</form>
+			<div id="taskList">
+			</div>
 		</main>
 	</div>
-	
 </body>
 </html>
